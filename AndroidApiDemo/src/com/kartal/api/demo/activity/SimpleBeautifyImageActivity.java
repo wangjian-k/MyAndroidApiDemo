@@ -1,12 +1,14 @@
 package com.kartal.api.demo.activity;
 
-import android.R.integer;
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.ColorMatrix;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -15,7 +17,7 @@ import com.kartal.api.demo.R;
 import com.kartal.api.demo.utils.ImageBeautifyHelper;
 import com.kartal.api.demo.utils.Util;
 
-public class SimpleBeautifyImageActivity extends Activity {
+public class SimpleBeautifyImageActivity extends Activity implements OnClickListener {
 
 	private float mHue,mSaturation,mLum;
 	private ImageView mImageView;
@@ -38,6 +40,19 @@ public class SimpleBeautifyImageActivity extends Activity {
 		skLum.setOnSeekBarChangeListener(seekListener);
 		mImageView = (ImageView) findViewById(R.id.image);
 		bitmap = Util.drawable2Bitmap(mImageView.getDrawable());
+		
+		Button button0 = (Button) findViewById(R.id.button0);
+		Button button1 = (Button) findViewById(R.id.button1);
+		Button button2 = (Button) findViewById(R.id.button2);
+		Button button3 = (Button) findViewById(R.id.button3);
+		Button button4 = (Button) findViewById(R.id.button4);
+		
+		button0.setOnClickListener(this);
+		button1.setOnClickListener(this);
+		button2.setOnClickListener(this);
+		button3.setOnClickListener(this);
+		button4.setOnClickListener(this);
+		
 	}
 	
 	private OnSeekBarChangeListener seekListener = new OnSeekBarChangeListener() {
@@ -78,6 +93,35 @@ public class SimpleBeautifyImageActivity extends Activity {
 		if(bitmap != null) {
 			bitmap.recycle();
 			bitmap = null;
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		float[] floatMatrixs = null;
+		switch (v.getId()) {
+		case R.id.button0:
+			floatMatrixs = ImageBeautifyHelper.getGrayMatrix();
+			break;
+		case R.id.button1:
+			floatMatrixs = ImageBeautifyHelper.getReverseMatrix();
+			break;
+		case R.id.button2:
+			floatMatrixs = ImageBeautifyHelper.getReminiscenceMatrix();
+			break;
+		case R.id.button3:
+			floatMatrixs = ImageBeautifyHelper.getRemoveColorMatrix();
+			break;
+		case R.id.button4:
+			floatMatrixs = ImageBeautifyHelper.getHighSaturationMatrix();
+			break;
+
+		default:
+			break;
+		}
+		
+		if(floatMatrixs != null) {
+			mImageView.setImageBitmap(ImageBeautifyHelper.getHandledBitmap(bitmap, floatMatrixs));
 		}
 	};
 }
