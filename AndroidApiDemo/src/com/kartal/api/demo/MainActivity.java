@@ -3,6 +3,7 @@ package com.kartal.api.demo;
 import com.kartal.api.demo.activity.Simple2DCanvasViewActivity;
 import com.kartal.api.demo.activity.SimpleBeautifyImageActivity;
 import com.kartal.api.demo.activity.SimpleSurfaceViewActivity;
+import com.kartal.api.demo.activity.XfermodeViewActivity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
@@ -28,6 +29,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		
 		Button beautifyImageView = (Button) findViewById(R.id.beautify_image);
 		beautifyImageView.setOnClickListener(this);
+		
+		Button xferModeViewButton = (Button) findViewById(R.id.xfermode_view);
+		xferModeViewButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -61,6 +65,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			break;
 		case R.id.beautify_image:
 			intent = new Intent(MainActivity.this,SimpleBeautifyImageActivity.class);
+			break;
+		case R.id.xfermode_view:
+			intent = new Intent(MainActivity.this,XfermodeViewActivity.class);
 			break;
 
 		default:

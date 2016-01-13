@@ -10,6 +10,13 @@
     android:orientation="vertical" >
 
     <Button
+        android:id="@+id/xfermode_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xfermode实现刮刮卡效果"
+        android:layout_centerHorizontal="true" />
+    
+    <Button
         android:id="@+id/beautify_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
