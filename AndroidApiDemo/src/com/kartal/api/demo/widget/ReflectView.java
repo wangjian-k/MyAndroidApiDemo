@@ -36,7 +36,7 @@ public class ReflectView extends View {
 		mPaint = new Paint();
 		mPaint.setShader(new LinearGradient(0, mSrcBitmap.getHeight(), 0, 
 				mSrcBitmap.getHeight() + mSrcBitmap.getHeight()/4, 
-				0XDD000000, 0X10000000, Shader.TileMode.CLAMP));
+				0XDD000000, 0X10000000, Shader.TileMode.CLAMP)); 
 		mXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
 		
 	}
