@@ -1,19 +1,20 @@
 package com.kartal.api.demo;
 
-import com.kartal.api.demo.activity.Simple2DCanvasViewActivity;
-import com.kartal.api.demo.activity.SimpleBeautifyImageActivity;
-import com.kartal.api.demo.activity.SimpleSurfaceViewActivity;
-import com.kartal.api.demo.activity.XfermodeViewActivity;
-
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
-import android.drm.DrmStore.RightsStatus;
+import android.graphics.drawable.Animatable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.kartal.api.demo.activity.Simple2DCanvasViewActivity;
+import com.kartal.api.demo.activity.SimpleBeautifyImageActivity;
+import com.kartal.api.demo.activity.SimpleSurfaceViewActivity;
+import com.kartal.api.demo.activity.XfermodeViewActivity;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 
@@ -32,6 +33,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		
 		Button xferModeViewButton = (Button) findViewById(R.id.xfermode_view);
 		xferModeViewButton.setOnClickListener(this);
+		
+		Button animationButton = (Button)findViewById(R.id.animation);
+		animationButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -68,6 +72,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			break;
 		case R.id.xfermode_view:
 			intent = new Intent(MainActivity.this,XfermodeViewActivity.class);
+			break;
+		case R.id.animation:
+			intent = new Intent(MainActivity.this,AnimationMainActivity.class);
 			break;
 
 		default:
